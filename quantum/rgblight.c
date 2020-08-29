@@ -456,6 +456,18 @@ void rgblight_sethsv_eeprom_helper(uint8_t hue, uint8_t sat, uint8_t val, bool w
                 hue = rgblight_config.hue;
             }
 #endif
+#ifdef RGBLIGHT_EFFECT_STATIC_PORTAL
+            else if (rgblight_status.base_mode == RGBLIGHT_MODE_STATIC_PORTAL) {
+                uint8_t count = rgblight_ranges.effect_num_leds;
+                uint8_t size = count / 2; // good luck if it's odd lol
+                uint8_t offset = size / 2;
+                for (uint8_t i = 0; i < size; ++i) {
+                    setrgb(0, 162, 255, (LED_TYPE *)&led[((i + offset) % count) + rgblight_ranges.effect_start_pos]);
+                    setrgb(255, 70, 0, (LED_TYPE *)&led[((i + size + offset) % count) + rgblight_ranges.effect_start_pos]);
+                }
+                rgblight_set();
+            }
+#endif
 #ifdef RGBLIGHT_EFFECT_STATIC_GRADIENT
             else if (rgblight_status.base_mode == RGBLIGHT_MODE_STATIC_GRADIENT) {
                 // static gradient

@@ -6,7 +6,7 @@
 #define VENDOR_ID       0x594d // "YM"
 #define PRODUCT_ID      0x4D96 // "M" + 96
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    YMDK
+#define MANUFACTURER    lin-e
 #define PRODUCT         Melody96
 #define DESCRIPTION     Melody96
 
@@ -43,9 +43,13 @@
 
 #define RGB_DI_PIN E2
 #ifdef RGB_DI_PIN
-#define RGBLIGHT_ANIMATIONS
+
+#define RGBLIGHT_EFFECT_RAINBOW_MOOD
+#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#define RGBLIGHT_EFFECT_STATIC_PORTAL
+
 #define RGBLED_NUM 18
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 8
+#define RGBLIGHT_HUE_STEP 4
+#define RGBLIGHT_SAT_STEP 4
+#define RGBLIGHT_VAL_STEP 4
 #endif
