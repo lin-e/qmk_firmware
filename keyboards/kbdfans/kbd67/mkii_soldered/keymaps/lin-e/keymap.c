@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "secret.h"
 
 enum {
     D_BASE = 0,
@@ -12,6 +13,8 @@ enum {
 #define _______ KC_TRNS
 #define ___X___ KC_NO
 #define TD_ESC TD(D_ESC)
+
+#define SC_M 0
 
 void dance_esc_each(qk_tap_dance_state_t *state, void *user_data) {
     register_code(KC_ESC);
@@ -46,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	KC_GRV , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_DEL , _______, RESET  ,
 	_______, _______, _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, KC_UP  , _______, _______, _______, _______, _______, _______,
 	_______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______,
-	_______, _______, DM_PLY1, DM_PLY2, _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY, KC_BTN1, KC_MS_U, KC_BTN2,
+	_______, M(SC_M), DM_PLY1, DM_PLY2, _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY, KC_BTN1, KC_MS_U, KC_BTN2,
 	_______, _______, _______, _______, _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R
   ),
   [_ML] = LAYOUT_all(
@@ -67,6 +70,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
+    keyevent_t event = record->event;
+    if (event.pressed) {
+        switch (id) {
+            case SC_M:
+                SEND_STRING(SEC_MASTER);
+                return false;
+        }
+    }
     return MACRO_NONE;
 }
 
