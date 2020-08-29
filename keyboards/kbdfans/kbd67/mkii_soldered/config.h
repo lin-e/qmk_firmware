@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xA103 // ai03
 #define PRODUCT_ID      0x0013
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    KBDfans
+#define MANUFACTURER    lin-e
 #define PRODUCT         KBD67-MKII
 #define DESCRIPTION     65% Keyboard
 
@@ -62,3 +62,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
+
+#define TAPPING_TERM 200
