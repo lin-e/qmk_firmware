@@ -66,3 +66,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 200
 
 #define DYNAMIC_MACRO_NO_NESTING
+
+#define MOUSEKEY_INTERVAL 10
+#define MOUSEKEY_MAX_SPEED 1
+#define MOUSEKEY_TIME_TO_MAX 40
+
+#define MOUSEKEY_WHEEL_MAX_SPEED 1
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 80
