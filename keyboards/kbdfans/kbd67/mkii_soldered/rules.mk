@@ -33,3 +33,5 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no         # Enable support for HD44780 based LCDs
 TAP_DANCE_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
+
+LAYOUTS = 65_ansi_blocker 65_ansi_blocker_split_bs 65_iso_blocker 65_iso_blocker_split_bs
