@@ -21,13 +21,10 @@
 typedef union {
   uint32_t raw;
   struct {
-    uint8_t      encoder_mode_index       :8; // DO NOT REMOVE,encoder 模式
-
+    uint8_t encoder_mode_index :8;
   };
 } keyboard_config_t;
 
 extern keyboard_config_t keyboard_config;
 
-
-#define VOLUME_ANIMATION_TIMER 580  //VOLUME animation persist time, 单位ms
 #endif
