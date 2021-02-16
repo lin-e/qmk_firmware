@@ -37,8 +37,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [D_ESC] = ACTION_TAP_DANCE_FN_ADVANCED(dance_esc_each, dance_esc_finished, dance_esc_reset)
 };
 
-// How long (in ms) to wait between animation steps for the snake mode
-const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {100, 35, 20}; 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	// [___] = LAYOUT_voice(
@@ -60,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	    RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_BTN1, KC_MS_U, KC_BTN2, _______, KC_UP  , _______, _______, _______, _______, _______, _______,
 	    RGB_TOG, RGB_HUD, RGB_SAD, RGB_VAD, KC_MS_L, KC_MS_D, KC_MS_R, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, RESET  , _______,
 	    _______, M(SC_M), _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, KC_MPRV, KC_MNXT, KC_MPLY, KC_BTN1, KC_MS_U, KC_BTN2,
-	    KC_RCTL, KC_RGUI, KC_RALT, _______, _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R,
+	    KC_RCTL, KC_RGUI, KC_RALT, _______, _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R
 	)
 };
 
@@ -79,22 +77,16 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 void matrix_init_user(void) {
 }
 
-
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	return true;
 }
 
-
 void matrix_scan_user(void) {
-
 }
 
 void encoder_update_user(uint8_t index, bool clockwise) {
-	/*
-		clockwise => scroll up
-	   !clockwise => scroll down
-	*/
+	// note clockwise is scrolling up
+	tap_code(clockwise ? KC_VOLU : KC_VOLD);
 }
 
 void let_set_user(uint8_t usb_led){
